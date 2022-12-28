@@ -1,5 +1,8 @@
 <?php
-    //Struktura obiektów      
+
+    session_start();
+
+//Struktura obiektów      
     class zadania{
         public $id_zad;
         public $numer_zad;
@@ -115,18 +118,18 @@
         {
             $element=$_POST['wyszpolecenie'];
             $drugi_element=$_POST['wyszdata_zadania'];
-            $query="SELECT * FROM `zadaniadb` WHERE 'zadanie'like'%$element%' AND`data` LIKE'$drugi_element'";
+            $_SESSION['zapytanie']="SELECT * FROM `zadaniadb` WHERE 'zadanie'like'%$element%' AND`data` LIKE'$drugi_element'";
+        
         }elseif(!empty($_POST['wyszpolecenie']))
         {
              $element=$_POST['wyszpolecenie'];
-             $query="SELECT * FROM `zadaniadb` WHERE `zadanie` LIKE '%$element%';";
+             $_SESSION['zapytanie']="SELECT * FROM `zadaniadb` WHERE `zadanie` LIKE '%$element%';";
          }elseif(!empty($_POST['wyszdata_zadania']))
         {
             $element=$_POST['wyszdata_zadania'];
-            $query="SELECT * FROM `zadaniadb` WHERE `data` LIKE '$element';";
+            $_SESSION['zapytanie']="SELECT * FROM `zadaniadb` WHERE `data` LIKE '$element';";
         }
-        
-      header("location: index.php?zapytanie=$query");
+      header("location: index.php");
     }
 
 

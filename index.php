@@ -1,5 +1,6 @@
 <?php
     include_once 'ustawienia.php'; 
+
 ?>
 
 <!DOCTYPE HTML>
@@ -41,9 +42,10 @@
                     alert("Błąd połączenia");
                 }
                 $i=1;
-                if(!empty($_GET['zapytanie']))
+                if(isset($_SESSION['zapytanie']))
                 {
-                    $query=$_GET['zapytanie'];
+                    $query=$_SESSION['zapytanie'];
+                    unset($_SESSION['zapytanie']);
                 }else
                 {
                     $query="SELECT *FROM `zadaniadb`"; 
@@ -76,7 +78,7 @@
             <form method='POST' action='ustawienia.php'>
                 <input type="text" name="wyszpolecenie"id="wyszpole" placeholder="Wyszukaj polecenie"></input>
                 <input type="date" name="wyszdata_zadania" id="wyszpole_data"></input>
-                <input type="submit" name="wyszprzeslij" id="btnwyszukaj" value="Wyszukaj"></input><br>
+                <input type="submit" name="wyszprzeslij" id="btnwyszukaj" value="Wyszukaj" title="Aby wrócić do wszystkich zadań naciśnij ponownie"></input><br>
             </form>
             </div>
         <div>
