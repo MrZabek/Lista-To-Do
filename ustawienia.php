@@ -1,38 +1,7 @@
 <?php
 
     session_start();
-    function dane()
-    {
-        $conn=mysqli_connect("localhost","root","","listatodo");
-        if(isset($_SESSION['alert']))
-        {
-            echo $_SESSION['alert'];
-            unset($_SESSION['alert']);
-        }
-        $i=1; 
-        if(isset($_SESSION['zapytanie']))
-        { 
-            $query=$_SESSION['zapytanie'];
-            unset($_SESSION['zapytanie']);
-        }else 
-        { 
-            $query="SELECT *FROM `zadaniadb`"; 
-        } 
-        $wynik=mysqli_query($conn,$query);
-        if(mysqli_num_rows($wynik)>0)
-        { 
-            while($row=mysqli_fetch_assoc($wynik))
-            { 
-                $zmienna=new zadania($row['numer'],$i,$row['zadanie'],$row['data'],$row['czas'],$row['stan']);
-                $zmienna->wypisz();
-                $i++; 
-            } 
-        }else 
-        { 
-            echo "<tr><td colspan=5'class='parz'>Brak danych</td></tr>";
-        }
-        mysqli_close($conn);
-    } 
+
 //Struktura obiektów      
     class zadania{
         public $id_zad;
@@ -81,6 +50,34 @@
         }
     }
 
+    function dane()
+    {
+        $conn=mysqli_connect("localhost","root","","listatodo");
+        $i=1; 
+        if(isset($_SESSION['zapytanie']))
+        { 
+            $query=$_SESSION['zapytanie'];
+            unset($_SESSION['zapytanie']);
+        }else 
+        { 
+            $query="SELECT *FROM `zadaniadb`"; 
+        } 
+        $wynik=mysqli_query($conn,$query);
+        if(mysqli_num_rows($wynik)>0)
+        { 
+            while($row=mysqli_fetch_assoc($wynik))
+            { 
+                $zmienna=new zadania($row['numer'],$i,$row['zadanie'],$row['data'],$row['czas'],$row['stan']);
+                $zmienna->wypisz();
+                $i++; 
+            } 
+        }else 
+        { 
+            echo "<tr><td colspan=5'class='parz'>Brak danych</td></tr>";
+        }
+        mysqli_close($conn);
+    } 
+
     //Dodawanie rekordów
     function dodaj()
     {
@@ -96,11 +93,22 @@
                     @$czas=$_POST['czas_zadania'];
                     @$query="INSERT INTO `zadaniadb`(`numer`, `zadanie`, `data`, `czas`, `stan`) VALUES ('','$dane','$data','$czas',0);"; 
                     mysqli_query($conn,$query);
-                }else  $_SESSION['alert']='<script> alert("Wprowadz godzine")</script>'; 
-            }else $_SESSION['alert']='<script> alert("Wprowadz datę")</script>'; 
-        }else $_SESSION['alert']='<script> alert("Wprowadz polecenie")</script>'; 
+                }else  $_SESSION['alert']='<h4>Wprowadz godzine</h4>'; 
+            }else $_SESSION['alert']='<h4>Wprowadz datę</h4>'; 
+        }else $_SESSION['alert']='<h4>Wprowadz polecenie</h4>'; 
         mysqli_close($conn);
         header("location: index.php");
+    }
+
+    function walid()
+    {
+        $conn=mysqli_connect("localhost","root","","listatodo");
+        if(isset($_SESSION['alert']))
+        {
+            echo $_SESSION['alert'];
+            unset($_SESSION['alert']);
+        }
+        mysqli_close($conn);
     }
 
     function usun()

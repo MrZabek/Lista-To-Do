@@ -24,6 +24,7 @@
                 <input type="submit" name="przeslij" id="button" value="Zatwierdz"/><br>
             </form>
         </div>
+        <?php walid(); ?>
     </header>
     <main>
         <table>
