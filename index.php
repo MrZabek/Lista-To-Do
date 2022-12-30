@@ -36,38 +36,7 @@
                 <th><input type="submit" value="delete"name="row_delete_multiple" id="delete"/></th>
             </tr>
             <?php 
-                $conn=mysqli_connect("localhost","root","","listatodo");
-                if(!$conn)
-                {
-                    alert("Błąd połączenia");
-                }
-                $i=1;
-                if(isset($_SESSION['zapytanie']))
-                {
-                    $query=$_SESSION['zapytanie'];
-                    unset($_SESSION['zapytanie']);
-                }else
-                {
-                    $query="SELECT *FROM `zadaniadb`"; 
-                }
-                $wynik=mysqli_query($conn,$query);
-                if(mysqli_num_rows($wynik)>0)
-                {
-                    while($row=mysqli_fetch_assoc($wynik))
-                    {
-                        $zmienna=new zadania($row['numer'],$i,$row['zadanie'],$row['data'],$row['czas'],$row['stan']);
-                        $zmienna->wypisz();
-                        $i++;
-                    }
-                }else
-                {
-                    ?>
-                    <tr>
-                        <td colspan="5"class='parz'>Brak danych</td>
-                    </tr>
-                    <?php
-
-                }mysqli_close($conn);
+                dane();
             ?>
           </tr>
           </form>

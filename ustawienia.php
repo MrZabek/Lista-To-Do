@@ -1,7 +1,37 @@
 <?php
 
     session_start();
-
+    function dane()
+    {
+        $conn=mysqli_connect("localhost","root","","listatodo");
+        if(!$conn)
+        { 
+            alert("Błąd połączenia");
+        } 
+        $i=1; 
+        if(isset($_SESSION['zapytanie']))
+        { 
+            $query=$_SESSION['zapytanie'];
+            unset($_SESSION['zapytanie']);
+        }else 
+        { 
+            $query="SELECT *FROM `zadaniadb`"; 
+        } 
+        $wynik=mysqli_query($conn,$query);
+        if(mysqli_num_rows($wynik)>0)
+        { 
+            while($row=mysqli_fetch_assoc($wynik))
+            { 
+                $zmienna=new zadania($row['numer'],$i,$row['zadanie'],$row['data'],$row['czas'],$row['stan']);
+                $zmienna->wypisz();
+                $i++; 
+            } 
+        }else 
+        { 
+            echo "<tr><td colspan=5'class='parz'>Brak danych</td></tr>";
+        }
+        mysqli_close($conn);
+    } 
 //Struktura obiektów      
     class zadania{
         public $id_zad;
@@ -65,9 +95,9 @@
                     @$czas=$_POST['czas_zadania'];
                     @$query="INSERT INTO `zadaniadb`(`numer`, `zadanie`, `data`, `czas`, `stan`) VALUES ('','$dane','$data','$czas',0);"; 
                     mysqli_query($conn,$query);
-                }else  echo  '"Wprowadz Zadanie"'; 
-            }else echo '"Wprowadz datę"'; 
-        }else echo '"Wprowadz godzinę"'; 
+                }else  echo  '<script> alert("Wprowadz Zadanie");</script>'; 
+            }else echo '<script> alert("Wprowadz datę");</script>'; 
+        }else echo '<script> alert("Wprowadz godzinę");</script>'; 
         mysqli_close($conn);
         header("location: index.php");
     }
