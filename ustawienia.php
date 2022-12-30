@@ -4,10 +4,11 @@
     function dane()
     {
         $conn=mysqli_connect("localhost","root","","listatodo");
-        if(!$conn)
-        { 
-            alert("Błąd połączenia");
-        } 
+        if(isset($_SESSION['alert']))
+        {
+            echo $_SESSION['alert'];
+            unset($_SESSION['alert']);
+        }
         $i=1; 
         if(isset($_SESSION['zapytanie']))
         { 
@@ -95,9 +96,9 @@
                     @$czas=$_POST['czas_zadania'];
                     @$query="INSERT INTO `zadaniadb`(`numer`, `zadanie`, `data`, `czas`, `stan`) VALUES ('','$dane','$data','$czas',0);"; 
                     mysqli_query($conn,$query);
-                }else  echo  '<script> alert("Wprowadz Zadanie");</script>'; 
-            }else echo '<script> alert("Wprowadz datę");</script>'; 
-        }else echo '<script> alert("Wprowadz godzinę");</script>'; 
+                }else  $_SESSION['alert']='<script> alert("Wprowadz godzine")</script>'; 
+            }else $_SESSION['alert']='<script> alert("Wprowadz datę")</script>'; 
+        }else $_SESSION['alert']='<script> alert("Wprowadz polecenie")</script>'; 
         mysqli_close($conn);
         header("location: index.php");
     }
