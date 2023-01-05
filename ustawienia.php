@@ -2,7 +2,7 @@
 
 session_start();
 
-//Struktura obiektów      
+//Struktura obiektów
 class zadania
 {
     public $id_zad;
