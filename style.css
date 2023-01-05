@@ -1,106 +1,109 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 10%;
-    margin-right:10%;
+    margin-right: 10%;
     margin-top: 0px;
     width: 100%;
     height: auto;
     background-image: url("grafika.jpeg");
-    background-size:cover;
+    background-size: cover;
 
 }
-header{
-    position:fixed;
+
+header {
+    position: fixed;
     top: 0px;
     background-color: rgb(194, 194, 194);
-    height:15%;
+    height: 15%;
     margin-top: 0px;
-    margin-bottom:15%;
-    max-width:80%;
-    width:80%;
-    border:1px solid black;
+    margin-bottom: 15%;
+    max-width: 80%;
+    width: 80%;
+    border: 1px solid black;
     box-sizing: border-box;
     border-spacing: 1px;
 }
-h1{
+
+h1 {
     text-align: center;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 1%;
 }
-h4{
+
+h4 {
     margin-left: 1%;
     margin-bottom: 1%;
 }
-#pole
-{
+
+#pole {
     height: auto;
     width: 45%;
-    position:absolute;
-    margin-left:10%;
+    position: absolute;
+    margin-left: 10%;
     font-size: medium;
 }
-#pole_data
-{
+
+#pole_data {
     height: auto;
     width: 6%;
-    position:absolute;
+    position: absolute;
     margin-left: 56%;
-    font-size: medium;  
+    font-size: medium;
 }
-#pole_czas
-{
+
+#pole_czas {
     height: auto;
     width: 6%;
-    position:absolute;
+    position: absolute;
     margin-left: 63%;
-    font-size: medium;  
+    font-size: medium;
 }
 
 
-#button{
+#button {
     font-weight: 300;
     height: auto;
-    width:15%;
-    position:absolute;
+    width: 15%;
+    position: absolute;
     margin-left: 70%;
 }
 
-.nieparz
-{
+.nieparz {
     background-color: rgb(168, 168, 168);
 }
-.parz
-{
+
+.parz {
     background-color: rgb(241, 237, 237);
 }
-main
-{ 
-    position:absolute;
-    top:15%;
+
+main {
+    position: absolute;
+    top: 15%;
     bottom: 0%;
     width: 80%;
-    overflow:auto;
+    overflow: auto;
     height: auto;
     margin-bottom: 2%;
 
 }
-table,tr{
-    border:1px solid black;
-    margin:0px;
-    padding:2px;
-    width:100%;
+
+table, tr {
+    border: 1px solid black;
+    margin: 0px;
+    padding: 2px;
+    width: 100%;
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
     border-collapse: collapse;
-    word-break:break-all;
+    word-break: break-all;
 
 }
-#naglowek
-{
+
+#naglowek {
     background-color: white;
 }
-#delete
-{
+
+#delete {
     font-size: medium;
     background-color: #f44336;
     color: white;
@@ -112,39 +115,40 @@ table,tr{
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
-.nr{  
+
+.nr {
     padding-left: 1.5%;
     width: 5%;
 }
-.zadaniea
-{
+
+.zadaniea {
     width: auto;
-    margin-inline: 2em; 
+    margin-inline: 2em;
 }
-.time
-{
+
+.time {
     padding-left: 1%;
-    width:20%;
+    width: 20%;
     text-align: center;
 }
-.akcje
-{
-    width:20%;
+
+.akcje {
+    width: 20%;
     text-align: center;
 }
-.check
-{
+
+.check {
     width: 15px;
     height: 15px;
     padding: 0;
-    margin:0;
+    margin: 0;
     margin-left: 50%;
     text-align: center;
-    vertical-align:middle;
+    vertical-align: middle;
     position: relative;
 }
-.dozrobienia
-{
+
+.dozrobienia {
     background-color: #f44336;
     color: white;
     padding: 5px 8px;
@@ -154,19 +158,19 @@ table,tr{
     margin-inline: 0.6em;
 
 }
-.zrobione
-{
+
+.zrobione {
     background-color: #04AA6D;
     color: white;
-    padding:5px 20px;
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-inline: 0.6em;
 
 }
-.usun
-{
+
+.usun {
     font-size: medium;
     background-color: #f44336;
     color: white;
@@ -178,45 +182,46 @@ table,tr{
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
-footer{
-    width:80%;
+
+footer {
+    width: 80%;
     text-align: right;
     height: 8%;
     padding-right: 1%;
     box-sizing: border-box;
     background-color: rgb(194, 194, 194);
-    position:fixed;
+    position: fixed;
     bottom: 0px;
-    border:1px solid black;
+    border: 1px solid black;
 }
-h5{
+
+h5 {
     margin-top: 0%;
 }
 
-#wyszpole
-{
+#wyszpole {
     height: 20px;
     width: 45%;
-    position:absolute;
-    top:5%;
-    left:2%;
+    position: absolute;
+    top: 5%;
+    left: 2%;
     font-size: medium;
 }
-#wyszpole_data
-{
+
+#wyszpole_data {
     height: 22px;
     width: 9%;
-    position:absolute;
-    top:5%;
-    left:48%;
+    position: absolute;
+    top: 5%;
+    left: 48%;
     font-size: medium;
 }
-#btnwyszukaj
-{
+
+#btnwyszukaj {
     height: 26px;
     width: 10%;
-    position:absolute;
-    top:5%;
-    left:58%;
+    position: absolute;
+    top: 5%;
+    left: 58%;
     font-size: medium;
 }
