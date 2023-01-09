@@ -1,5 +1,5 @@
 <?php
-include_once 'ustawienia.php';
+include_once 'src/ustawienia.php';
 
 ?>
 
@@ -10,14 +10,14 @@ include_once 'ustawienia.php';
     <title>Lista To Do</title>
     <meta name="author" content="Marcin Zabrocki">
     <meta http-equiv="x-ua-compatible" content="IE=EDGE,chrome=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <header>
     <div>
         <h1><b>Lista zadań do wykonania</b></h1>
-        <form action="ustawienia.php" method="post">
+        <form action="src/ustawienia.php" method="post">
             <input type="text" name="polecenie" id="pole"
                    placeholder="Dodaj zadanie"/>
             <input type="date" name="data_zadania" id="pole_data"/>
@@ -34,7 +34,7 @@ include_once 'ustawienia.php';
             <th>Zadanie</th>
             <th>Wykonać do</th>
             <th>Akcje</th>
-            <form method='$_GET' action='ustawienia.php'>
+            <form method='$_GET' action='src/ustawienia.php'>
                 <th><input type="submit" value="delete"
                            name="row_delete_multiple" id="delete"/></th>
         </tr>
@@ -47,7 +47,7 @@ include_once 'ustawienia.php';
 </main>
 <footer>
     <div>
-        <form method='POST' action='ustawienia.php'>
+        <form method='POST' action='src/ustawienia.php'>
             <input type="text" name="wyszpolecenie" id="wyszpole"
                    placeholder="Wyszukaj polecenie"></input>
             <input type="date" name="wyszdata_zadania"
