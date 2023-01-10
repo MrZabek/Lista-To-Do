@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 class Application
 {
     private static $instance;
@@ -13,10 +14,12 @@ class Application
         }
         return static::$instance;
     }
+
     public function connect()
     {
-        if (isset(static::$instance))
-            $pol=mysqli_connect('localhost','root','','listatodo');
+        if (isset(static::$instance)) {
+            $pol = mysqli_connect('localhost', 'root', '', 'listatodo');
+        }
         return $pol;
     }
 
@@ -82,6 +85,7 @@ class Application
         }
     }
 }
+
 //Struktura obiektów
 class zadania
 {
@@ -130,7 +134,6 @@ class zadania
         echo "<a href='src/ustawienia.php?del=$this->id_zad' class='usun'>X</a></td>";
         echo "<td><input class='check' type='checkbox' name='usun_wiele[]' value='$this->id_zad'></td>";
         echo "</tr>";
-
     }
 }
 
@@ -147,8 +150,10 @@ function dane()
     $wynik = mysqli_query($conn, $query);
     if (mysqli_num_rows($wynik) > 0) {
         while ($row = mysqli_fetch_assoc($wynik)) {
-            $zmienna = new zadania($row['numer'], $i, $row['zadanie'],
-                $row['data'], $row['czas'], $row['stan']);
+            $zmienna = new zadania(
+                $row['numer'], $i, $row['zadanie'],
+                $row['data'], $row['czas'], $row['stan']
+            );
             $zmienna->wypisz();
             $i++;
         }
@@ -180,8 +185,10 @@ function dodaj()
     } else {
         $_SESSION['alert'] = '<h4>Wprowadz polecenie</h4>';
     }
+    $pow = router::powrot();
+    echo $pow;
     mysqli_close($conn);
-    header("location:  \Lista-To-Do\index.php");
+
 }
 
 function walid()
@@ -203,7 +210,8 @@ function usun()
     $query = "DELETE FROM `zadaniadb` WHERE `numer` IN($format_id);";
     mysqli_query($conn, $query);
     mysqli_close($conn);
-    header("location:\Lista-To-Do\index.php");
+    $pow = router::powrot();
+    echo $pow;
 }
 
 function deleteonce()
@@ -213,7 +221,8 @@ function deleteonce()
     $id = $_GET['del'];
     mysqli_query($conn, "DELETE FROM `zadaniadb` WHERE `numer` =$id;");
     mysqli_close($conn);
-    header("location:\Lista-To-Do\index.php");
+    $pow = router::powrot();
+    echo $pow;
 }
 
 function stan()
@@ -222,16 +231,21 @@ function stan()
     $conn = mysqli_connect("localhost", "root", "", "listatodo");
     if (isset($_GET['dozrobienia'])) {
         $id = $_GET['dozrobienia'];
-        mysqli_query($conn,
-            "UPDATE `zadaniadb` SET `stan` = '0' WHERE `numer` = $id;");
+        mysqli_query(
+            $conn,
+            "UPDATE `zadaniadb` SET `stan` = '0' WHERE `numer` = $id;"
+        );
     }
     if (isset($_GET['zrobione'])) {
         $id = $_GET['zrobione'];
-        mysqli_query($conn,
-            "UPDATE `zadaniadb` SET `stan` = '1' WHERE `numer` = $id;");
+        mysqli_query(
+            $conn,
+            "UPDATE `zadaniadb` SET `stan` = '1' WHERE `numer` = $id;"
+        );
     }
     mysqli_close($conn);
-    header("location:\Lista-To-Do\index.php");
+    $pow = router::powrot();
+    echo $pow;
 }
 
 //Wyszukiwanie na podstawie zadania lub daty
@@ -242,7 +256,6 @@ function wyszukaj()
         $drugi_element = $_POST['wyszdata_zadania'];
         $_SESSION['zapytanie']
             = "SELECT * FROM `zadaniadb` WHERE 'zadanie'like'%$element%' AND`data` LIKE'$drugi_element'";
-
     } elseif (!empty($_POST['wyszpolecenie'])) {
         $element = $_POST['wyszpolecenie'];
         $_SESSION['zapytanie']
@@ -252,19 +265,34 @@ function wyszukaj()
         $_SESSION['zapytanie']
             = "SELECT * FROM `zadaniadb` WHERE `data` LIKE '$element';";
     }
-    header("location:\Lista-To-Do\index.php");
+    $pow = router::powrot();
+    echo $pow;
 }
 
+class router
+{
 
-if (isset($_GET['zrobione']) || isset($_GET['dozrobienia'])) {
-    stan();
-} elseif (isset($_GET['del'])) {
-    deleteonce();
-} elseif (isset($_GET['row_delete_multiple'])) {
-    usun();
-} elseif (isset($_POST['przeslij'])) {
-    dodaj();
-} elseif (isset($_POST['wyszprzeslij'])) {
-    wyszukaj();
+    public function przekierowanie()
+    {
+        if (isset($_GET['zrobione']) || isset($_GET['dozrobienia'])) {
+            stan();
+        } elseif (isset($_GET['del'])) {
+            deleteonce();
+        } elseif (isset($_GET['row_delete_multiple'])) {
+            usun();
+        } elseif (isset($_POST['przeslij'])) {
+            dodaj();
+        } elseif (isset($_POST['wyszprzeslij'])) {
+            wyszukaj();
+        }
+    }
+
+    public function powrot()
+    {
+        header("location:\Lista-To-Do\index.php");
+    }
 }
+
+$akcja = router::przekierowanie();
+echo $akcja;
 ?>
