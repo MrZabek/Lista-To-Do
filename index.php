@@ -1,8 +1,16 @@
 <?php
 
+=======
+
 include_once 'ustawienia.php';
 
+
+include_once 'src/ustawienia.php';
+$app = Application::getInstance();
+$app->run();
 ?>
+
+=======
 
 <!DOCTYPE HTML>
 <html LANG="PL">
@@ -65,3 +73,4 @@ include_once 'ustawienia.php';
 </footer>
 </body>
 </html>
+
