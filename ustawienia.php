@@ -50,7 +50,6 @@ class zadania
         echo "<a href='ustawienia.php?del=$this->id_zad' class='usun'>X</a></td>";
         echo "<td><input class='check' type='checkbox' name='usun_wiele[]' value='$this->id_zad'></td>";
         echo "</tr>";
-
     }
 }
 
@@ -67,8 +66,10 @@ function dane()
     $wynik = mysqli_query($conn, $query);
     if (mysqli_num_rows($wynik) > 0) {
         while ($row = mysqli_fetch_assoc($wynik)) {
-            $zmienna = new zadania($row['numer'], $i, $row['zadanie'],
-                $row['data'], $row['czas'], $row['stan']);
+            $zmienna = new zadania(
+                $row['numer'], $i, $row['zadanie'],
+                $row['data'], $row['czas'], $row['stan']
+            );
             $zmienna->wypisz();
             $i++;
         }
@@ -142,13 +143,17 @@ function stan()
     $conn = mysqli_connect("localhost", "root", "", "listatodo");
     if (isset($_GET['dozrobienia'])) {
         $id = $_GET['dozrobienia'];
-        mysqli_query($conn,
-            "UPDATE `zadaniadb` SET `stan` = '0' WHERE `numer` = $id;");
+        mysqli_query(
+            $conn,
+            "UPDATE `zadaniadb` SET `stan` = '0' WHERE `numer` = $id;"
+        );
     }
     if (isset($_GET['zrobione'])) {
         $id = $_GET['zrobione'];
-        mysqli_query($conn,
-            "UPDATE `zadaniadb` SET `stan` = '1' WHERE `numer` = $id;");
+        mysqli_query(
+            $conn,
+            "UPDATE `zadaniadb` SET `stan` = '1' WHERE `numer` = $id;"
+        );
     }
     mysqli_close($conn);
     header("location: index.php");
@@ -162,7 +167,6 @@ function wyszukaj()
         $drugi_element = $_POST['wyszdata_zadania'];
         $_SESSION['zapytanie']
             = "SELECT * FROM `zadaniadb` WHERE 'zadanie'like'%$element%' AND`data` LIKE'$drugi_element'";
-
     } elseif (!empty($_POST['wyszpolecenie'])) {
         $element = $_POST['wyszpolecenie'];
         $_SESSION['zapytanie']
