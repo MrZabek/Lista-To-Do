@@ -1,4 +1,5 @@
 <?php
+
 include_once 'ustawienia.php';
 
 ?>
@@ -25,7 +26,8 @@ include_once 'ustawienia.php';
             <input type="submit" name="przeslij" id="button" value="Zatwierdz"/><br>
         </form>
     </div>
-    <?php walid(); ?>
+    <?php
+    walid(); ?>
 </header>
 <main>
     <table>
