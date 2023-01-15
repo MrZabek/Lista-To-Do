@@ -12,7 +12,10 @@
         }
     ],
     "files": [
-        "index.php",
+        "public/index.php",
         "src/ustawienia.php"
-    ]
+    ],
+    "require": {
+        "ext-mysqli": "*"
+    }
 }
