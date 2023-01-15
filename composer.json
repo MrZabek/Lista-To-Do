@@ -14,5 +14,8 @@
     "files": [
         "index.php",
         "src/ustawienia.php"
-    ]
+    ],
+    "require": {
+        "ext-mysqli": "*"
+    }
 }
