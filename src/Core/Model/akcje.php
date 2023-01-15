@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Composer\Core\Model;
-
+session_start();
 require_once 'configdb.php';
 
 class akcje
@@ -134,13 +134,13 @@ class akcje
 }
 
 if (isset($_GET['zrobione']) || isset($_GET['dozrobienia'])) {
-    akcje::stan();
+    (new akcje)->stan();
 } elseif (isset($_GET['del'])) {
-    akcje::deleteonce();
+    (new akcje)->deleteonce();
 } elseif (isset($_GET['row_delete_multiple'])) {
-    akcje::usun();
+    (new akcje)->usun();
 } elseif (isset($_POST['przeslij'])) {
-    akcje::dodaj();
+    (new akcje)->dodaj();
 } elseif (isset($_POST['wyszprzeslij'])) {
-    akcje::wyszukaj();
+    (new akcje)->wyszukaj();
 }

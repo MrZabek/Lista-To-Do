@@ -2,7 +2,6 @@
 
 namespace App\Composer\Core\Model;
 
-session_start();
 
 class Zadania
 {
@@ -48,7 +47,7 @@ class Zadania
         } else {
             echo "<a href='/../Lista-To-Do/src/Core/Model/akcje.php?dozrobienia=$this->id_zad' value='$this->numer_zad' class='zrobione'>Zrobione</a>";
         }
-        echo "<a href='/../Lista-To-Do/Core/Model/akcje.php?del=$this->id_zad' class='usun'>X</a></td>";
+        echo "<a href='/../Lista-To-Do/src/Core/Model/akcje.php?del=$this->id_zad' class='usun'>X</a></td>";
         echo "<td><input class='check' type='checkbox' name='usun_wiele[]' value='$this->id_zad'></td>";
         echo "</tr>";
     }
