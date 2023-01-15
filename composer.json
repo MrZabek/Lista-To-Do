@@ -1,4 +1,5 @@
 {
+
   "name": "app/composer",
   "autoload": {
     "psr-4": {
@@ -18,4 +19,25 @@
   "require": {
     "ext-mysqli": "*"
   }
+
+    "name": "app/composer",
+    "autoload": {
+        "psr-4": {
+            "App\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcin Zabrocki",
+            "email": "120128110+MrZabek@users.noreply.github.com"
+        }
+    ],
+    "files": [
+        "public/index.php",
+        "src/ustawienia.php"
+    ],
+    "require": {
+        "ext-mysqli": "*"
+    }
+
 }
