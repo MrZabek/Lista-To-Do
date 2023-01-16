@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Composer\Core\Model;
+namespace App\Composer\Core\view;
 
-use App\Composer\Modules\akcje;
+use App\Composer\Core\Model\akcje;
 
 class view
 {
@@ -23,7 +23,7 @@ class view
                     <header>
                     <div>
                         <h1><b>Lista zadań do wykonania</b></h1>
-                        <form action="/../Lista-To-Do/src/Modules/akcje.php" method="post">
+                        <form action="/../Lista-To-Do/src/Core/Model/akcje.php" method="post">
                             <input type="text" name="polecenie" id="pole" placeholder="Dodaj zadanie"/>
                             <input type="date" name="data_zadania" id="pole_data"/>
                             <input type="time" name="czas_zadania" id="pole_czas"/>
@@ -39,7 +39,7 @@ class view
                              <th>Zadanie</th>
                                 <th>Wykonać do</th>
                                 <th>Akcje</th>
-                                <form method="$_GET" action="/../Lista-To-Do/src/Modules/akcje.php">
+                                <form method="$_GET" action="/../Lista-To-Do/src/Core/Model/akcje.php">
                                     <th><input type="submit" value="delete" name="row_delete_multiple" id="delete"/></th>');
         akcje::dane();
         echo('
@@ -49,7 +49,7 @@ class view
                     </main>
                     <footer>
                         <div>
-                            <form method="POST" action="/../Lista-To-Do/src/Modules/akcje.php">
+                            <form method="POST" action="/../Lista-To-Do/src/Core/Model/akcje.php">
                                 <input type="text" name="wyszpolecenie" id="wyszpole"
                                         placeholder="Wyszukaj polecenie"></input>
                                 <input type="date" name="wyszdata_zadania"

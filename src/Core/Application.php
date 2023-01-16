@@ -19,7 +19,7 @@ class Application
     public function run()
     {
         if (isset(static::$instance)) {
-            (new Model\view)->widok();
+            (new view\view)->widok();
         }
     }
 }
