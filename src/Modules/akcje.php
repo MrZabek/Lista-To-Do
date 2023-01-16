@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Composer\Core\Model;
+namespace App\Composer\Modules;
 
 use App\Composer\Core\Model;
-
-include_once 'configdb.php';
+@ include_once '../Core/Model/configdb.php';
 session_start();
 
 class akcje
