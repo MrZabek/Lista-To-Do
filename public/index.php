@@ -1,5 +1,8 @@
 <?php
 
 include_once __DIR__ . "/../vendor/autoload.php";
-$app = (new App\Composer\Core\Application)->getInstance();
+
+use App\Composer\Core\Application;
+
+$app = (new Application)->getInstance();
 $app->run();

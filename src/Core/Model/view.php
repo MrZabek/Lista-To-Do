@@ -2,8 +2,6 @@
 
 namespace App\Composer\Core\Model;
 
-use App\Composer\Core\Model;
-
 class view
 {
     public function widok()
@@ -30,7 +28,7 @@ class view
                             <input type="submit" name="przeslij" id="button" value="Zatwierdz"/><br>
                         </form>
                     </div>');
-        Model\akcje::walid();
+        akcje::walid();
         echo('</header>
                     <main>
                         <table>
@@ -41,7 +39,7 @@ class view
                                 <th>Akcje</th>
                                 <form method="$_GET" action="/../Lista-To-Do/src/Core/Model/akcje.php">
                                     <th><input type="submit" value="delete" name="row_delete_multiple" id="delete"/></th>');
-        Model\akcje::dane();
+        akcje::dane();
         echo('
                             </tr>
                             </form>

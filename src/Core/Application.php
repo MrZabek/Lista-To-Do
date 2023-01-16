@@ -2,7 +2,6 @@
 
 namespace App\Composer\Core;
 
-use App\Composer\Core\Model;
 
 class Application
 {
@@ -15,14 +14,6 @@ class Application
             static::$instance = new static();
         }
         return static::$instance;
-    }
-
-    public function connect()
-    {
-        if (isset(static::$instance)) {
-            $pol = mysqli_connect('localhost', 'root', '', 'listatodo');
-        }
-        return $pol;
     }
 
     public function run()
